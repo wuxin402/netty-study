@@ -43,7 +43,7 @@ public class TimeClient {
     }
 
     /**
-     *1、创建客户端处理I/O都写的NioEventLoopGroup线程组，然后继续创建客户端辅助启动类Bootstrap，
+     *1、创建客户端处理I/O读写的NioEventLoopGroup线程组，然后继续创建客户端辅助启动类Bootstrap，
      *随后需要对其进行配置，与服务端不同的时，它的channel需要设置为NioSockChannel,然后为其添加
      *Handler。直接传教匿名内部类，实现initChannel方法，其作用是当创建NioSockChannel成功之后，
      *在进行初始化时，将它的ChannelHandler设置到ChannelPipeline中，用于处理网络I/O事件。
