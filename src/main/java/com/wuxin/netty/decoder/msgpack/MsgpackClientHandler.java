@@ -23,9 +23,8 @@ public class MsgpackClientHandler extends ChannelHandlerAdapter {
 
     private UserInfo[] getUserInfos() {
         UserInfo[] userInfos = new UserInfo[sendNumber];
-        UserInfo userInfo = null;
         for(int i = 0; i < sendNumber; i++) {
-            userInfo = new UserInfo();
+            UserInfo userInfo = new UserInfo();
             userInfo.setAge(i);
             userInfo.setName("ABCDEFG --->" + i);
             userInfos[i] = userInfo;
