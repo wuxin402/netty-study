@@ -1,6 +1,5 @@
 package com.wuxin.netty.decoder.msgpack;
 
-import com.wuxin.netty.decoder.echo.EchoClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -42,7 +41,6 @@ public class MsgpackClient {
                             socketChannel.pipeline().addLast("frameEncoder",new LengthFieldPrepender(2));
                             socketChannel.pipeline().addLast("msgpack encoder",new MsgpackEncoder());
                             socketChannel.pipeline().addLast(new MsgpackClientHandler(sendNumber));
-
                         }
                     });
             ChannelFuture future = b.connect(host, port).sync();

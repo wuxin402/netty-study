@@ -19,7 +19,7 @@ import io.netty.handler.logging.LoggingHandler;
 public class MsgpackServer {
     private final int port;
 
-    public  MsgpackServer(int port,int sendNumber) {
+    public  MsgpackServer(int port) {
         this.port = port;
     }
     public void run() throws Exception {
@@ -35,12 +35,11 @@ public class MsgpackServer {
 
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast("frameDecoder", new LengthFieldBasedFrameDecoder(65535, 0, 2, 0, 2));
-                            ch.pipeline().addLast("msgpack decoder", new MsgpackDecoder());
-                            ch.pipeline().addLast("frameEncoder", new LengthFieldPrepender(2));
-                            ch.pipeline().addLast("msgpack encoder", new MsgpackEncoder());
+//                            ch.pipeline().addLast("frameDecoder", new LengthFieldBasedFrameDecoder(65535, 0, 2, 0, 2));
+//                            ch.pipeline().addLast("msgpack decoder", new MsgpackDecoder());
+//                            ch.pipeline().addLast("frameEncoder", new LengthFieldPrepender(2));
+//                            ch.pipeline().addLast("msgpack encoder", new MsgpackEncoder());
                             ch.pipeline().addLast(new MsgServerHandler());
-
                         }
                     });
             ChannelFuture future = b.bind(port).sync();
@@ -53,6 +52,6 @@ public class MsgpackServer {
 
     public static void main(String[] args) throws Exception{
         int port = 8080;
-        new MsgpackServer(port,100).run();
+        new MsgpackServer(port).run();
     }
 }
