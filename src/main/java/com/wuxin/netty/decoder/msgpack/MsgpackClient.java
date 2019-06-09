@@ -52,6 +52,6 @@ public class MsgpackClient {
 
     public static void main(String[] args) throws Exception{
         int port = 8080;
-        new MsgpackClient("127.0.0.1",port,100).run();
+        new MsgpackClient("127.0.0.1",port,10000).run();
     }
 }

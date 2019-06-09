@@ -19,7 +19,7 @@ public class MsgpackDecoder extends MessageToMessageDecoder<ByteBuf> {
         array = new byte[length];
         byteBuf.getBytes(byteBuf.readerIndex(),array,0,length);
         MessagePack msgpack = new MessagePack();
-        list.add(msgpack.read(array,UserInfo.class));
+        list.add(msgpack.read(array));
     }
 
     /**

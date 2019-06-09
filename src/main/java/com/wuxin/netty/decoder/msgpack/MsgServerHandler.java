@@ -12,9 +12,8 @@ public class MsgServerHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-    	UserInfo userInfo =(UserInfo)msg;
         System.out.println("Client receive the msgpack message:" + msg);
-        ctx.writeAndFlush(userInfo);
+        ctx.writeAndFlush(msg);
     }
 
     @Override
